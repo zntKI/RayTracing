@@ -1,3 +1,6 @@
+#include "Utility/vec3.hpp"
+#include "Utility/color.hpp"
+
 #include <iostream>
 
 int main () {
@@ -15,19 +18,12 @@ int main () {
 
 		for (int i = 0; i < image_width; i++) {
 
-			auto r = float (i) / (image_width - 1);
-			auto g = float (j) / (image_height - 1);
-			auto b = 0.0;
-
-			int ir = int (255.999 * r);
-			int ig = int (255.999 * g);
-			int ib = int (255.999 * b);
-
-			std::cout << ir << ' ' << ig << ' ' << ib << '\n';
+			auto pixel_color = color (i / float (image_width), j / float (image_height), 0);
+			write_color (std::cout, pixel_color);
 
 		}
 
 	}
 
-	std::clog << "\rDone.				\n";
+	std::clog << "\rDone.\n";
 }

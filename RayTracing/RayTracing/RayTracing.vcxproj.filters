@@ -3,8 +3,10 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utility\vec3.cpp" />
+    <ClCompile Include="Utility\color.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility\vec3.hpp" />
+    <ClInclude Include="Utility\color.hpp" />
   </ItemGroup>
 </Project>
