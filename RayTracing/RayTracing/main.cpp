@@ -4,7 +4,24 @@
 
 #include <iostream>
 
+bool hit_sphere (const point3& sphereCenter, double radius, const ray& r)
+{
+	vec3 oc = sphereCenter - r.getOrigin ();
+
+	vec3 rayDirection = r.getDirection ();
+
+	auto a = dot (rayDirection, rayDirection);
+	auto b = -2.0f * dot (rayDirection, oc);
+	auto c = dot (oc, oc) - radius * radius;
+	auto discriminant = b * b - 4 * a * c;
+
+	return (discriminant >= 0);
+}
+
 color ray_color (const ray& r) {
+	if (hit_sphere (point3 (0.f, 0.f, -1.f), 0.5f, r))
+		return color (1, 0, 0);
+
 	vec3 unit_direction = unit_vector (r.getDirection ());
 	auto a = 0.5f * (unit_direction.y () + 1.0);
 	return (1.0f - a) * color (1.f, 1.f, 1.f) + a * color (0.5f, 0.7f, 1.0f)/*light blue*/;
