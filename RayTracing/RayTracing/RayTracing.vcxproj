@@ -135,11 +135,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ray.cpp" />
     <ClCompile Include="Utility\color.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utility\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ray.hpp" />
     <ClInclude Include="Utility\color.hpp" />
     <ClInclude Include="Utility\vec3.hpp" />
   </ItemGroup>
