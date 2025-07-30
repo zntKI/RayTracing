@@ -13,5 +13,7 @@ public:
 	bool contains (float x) const;
 	bool surrounds (float x) const;
 
+	float clapm (float x) const;
+
 	static const interval empty, universe;
 };
