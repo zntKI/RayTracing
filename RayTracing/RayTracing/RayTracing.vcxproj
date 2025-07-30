@@ -135,6 +135,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="camera.cpp" />
     <ClCompile Include="hittable_list.cpp" />
     <ClCompile Include="hittable.cpp" />
     <ClCompile Include="Utility\interval.cpp" />
@@ -145,6 +146,7 @@
     <ClCompile Include="Utility\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="camera.hpp" />
     <ClInclude Include="hittable_list.hpp" />
     <ClInclude Include="Utility\interval.hpp" />
     <ClInclude Include="sphere.hpp" />
