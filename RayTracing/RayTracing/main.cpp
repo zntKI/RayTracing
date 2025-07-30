@@ -1,34 +1,20 @@
+#include "Utility/utility.hpp"
+
 #include "Utility/vec3.hpp"
 #include "Utility/color.hpp"
 #include "Utility/ray.hpp"
 
+#include "hittable.hpp"
+#include "hittable_list.hpp"
+#include "sphere.hpp"
+
 #include <iostream>
 
-float hit_sphere (const point3& sphereCenter, float radius, const ray& r)
-{
-	vec3 oc = sphereCenter - r.getOrigin ();
-
-	vec3 rayDirection = r.getDirection ();
-
-	auto a = rayDirection.length_sqaured();
-	auto h = dot (rayDirection, oc);
-	auto c = oc.length_sqaured() - radius * radius;
-	auto discriminant = h * h - a * c;
-
-	if (discriminant < 0) {
-		return -1.0f;
-	}
-	else {
-		return (h - std::sqrt (discriminant)) / a;
-	}
-}
-
-color ray_color (const ray& r) {
-	float sphere_radius = 0.5f;
-	auto t = hit_sphere (point3 (0.f, 0.f, -1.f), sphere_radius, r);
-	if (t > 0.0f) {
-		vec3 N = (r.at (t) - vec3 (0.f, 0.f, -1.f)) / sphere_radius;
-		return 0.5 * color (N.x () + 1, N.y () + 1, N.z () + 1);
+color ray_color (const ray& r, const hittable& world) {
+	hit_record rec;
+	if (world.hit(r, interval(0, infinity), rec))
+	{
+		return 0.5f * (rec.normal + color (1.f, 1.f, 1.f));
 	}
 
 	vec3 unit_direction = unit_vector (r.getDirection ());
@@ -46,6 +32,13 @@ int main () {
 	// Calculate the image height, and ensure that it's at least 1.
 	int image_height = int (image_width / aspect_ratio);
 	image_height = (image_height < 1) ? 1 : image_height;
+
+	// World
+
+	hittable_list world;
+
+	world.add (std::make_shared<sphere> (point3 (0.f, 0.f, -1.f), 0.5f));
+	world.add (std::make_shared<sphere> (point3 (0.f, -100.5f, -1.f), 100.f));
 
 	// Camera
 
@@ -79,7 +72,7 @@ int main () {
 			auto ray_direction = pixel_center - camera_center;
 			ray r (camera_center, ray_direction);
 
-			color pixel_color = ray_color (r);
+			color pixel_color = ray_color (r, world);
 			write_color (std::cout, pixel_color);
 
 		}

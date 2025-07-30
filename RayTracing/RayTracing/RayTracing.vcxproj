@@ -135,14 +135,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="hittable_list.cpp" />
+    <ClCompile Include="hittable.cpp" />
+    <ClCompile Include="Utility\interval.cpp" />
+    <ClCompile Include="sphere.cpp" />
     <ClCompile Include="Utility\ray.cpp" />
     <ClCompile Include="Utility\color.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Utility\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="hittable_list.hpp" />
+    <ClInclude Include="Utility\interval.hpp" />
+    <ClInclude Include="sphere.hpp" />
+    <ClInclude Include="hittable.hpp" />
     <ClInclude Include="Utility\ray.hpp" />
     <ClInclude Include="Utility\color.hpp" />
+    <ClInclude Include="Utility\utility.hpp" />
     <ClInclude Include="Utility\vec3.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
