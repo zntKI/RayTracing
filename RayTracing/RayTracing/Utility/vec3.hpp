@@ -27,6 +27,9 @@ public:
 	float length () const;
 
 	float length_sqaured () const;
+
+	static vec3 random ();
+	static vec3 random (float min, float max);
 };
 
 using point3 = vec3;
@@ -74,4 +77,24 @@ inline vec3 cross (const vec3& u, const vec3& v) {
 
 inline vec3 unit_vector (const vec3& v) {
 	return v / v.length ();
+}
+
+inline vec3 random_unit_vector () {
+
+	while (true)
+	{
+		auto p = vec3::random (-1.f, 1.f);
+		auto lensq = p.length_sqaured ();
+		if (lensq > 1e-160 && lensq <= 1)
+			return p / sqrt (lensq);
+	}
+
+}
+
+inline vec3 random_on_hemisphere (const vec3& normal) {
+	vec3 on_unit_sphere = random_unit_vector ();
+	if (dot (on_unit_sphere, normal) > 0.f) // In the same hemisphere as the normal
+		return on_unit_sphere;
+	else
+		return -on_unit_sphere;
 }

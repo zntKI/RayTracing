@@ -1,5 +1,7 @@
 #include "vec3.hpp"
 
+#include "utility.hpp"
+
 vec3::vec3 () : e{ 0, 0, 0 }
 {
 }
@@ -48,4 +50,14 @@ float vec3::length () const {
 
 float vec3::length_sqaured () const {
 	return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
+}
+
+vec3 vec3::random ()
+{
+	return vec3 (random_float (), random_float (), random_float ());
+}
+
+vec3 vec3::random (float min, float max)
+{
+	return vec3 (random_float (min, max), random_float (min, max), random_float (min, max));
 }
