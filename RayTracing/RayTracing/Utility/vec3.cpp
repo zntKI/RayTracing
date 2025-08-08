@@ -61,3 +61,10 @@ vec3 vec3::random (float min, float max)
 {
 	return vec3 (random_float (min, max), random_float (min, max), random_float (min, max));
 }
+
+bool vec3::near_zero () const
+{
+	// Return true if the vector is close to zero in all dimensons
+	auto s = 1e-8;
+	return (std::fabs (e[0]) < s) && (std::fabs (e[1]) < s) && (std::fabs (e[2]) < s);
+}

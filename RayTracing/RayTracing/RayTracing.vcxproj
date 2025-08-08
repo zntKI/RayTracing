@@ -138,6 +138,7 @@
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="hittable_list.cpp" />
     <ClCompile Include="hittable.cpp" />
+    <ClCompile Include="material.cpp" />
     <ClCompile Include="Utility\interval.cpp" />
     <ClCompile Include="sphere.cpp" />
     <ClCompile Include="Utility\ray.cpp" />
@@ -148,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="hittable_list.hpp" />
+    <ClInclude Include="material.hpp" />
     <ClInclude Include="Utility\interval.hpp" />
     <ClInclude Include="sphere.hpp" />
     <ClInclude Include="hittable.hpp" />

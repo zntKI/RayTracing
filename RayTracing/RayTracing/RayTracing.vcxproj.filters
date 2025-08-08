@@ -10,6 +10,7 @@
     <ClCompile Include="hittable_list.cpp" />
     <ClCompile Include="Utility\interval.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="material.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Utility\vec3.hpp" />
@@ -21,5 +22,6 @@
     <ClInclude Include="Utility\utility.hpp" />
     <ClInclude Include="Utility\interval.hpp" />
     <ClInclude Include="camera.hpp" />
+    <ClInclude Include="material.hpp" />
   </ItemGroup>
 </Project>
